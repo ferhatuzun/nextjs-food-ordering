@@ -1,0 +1,9 @@
+import * as Yup from "yup"
+
+const loginSchema = Yup.object({
+    email: Yup.string().matches(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/, "Geçersiz bir email adresi").min(10, "Minimum 10 karakterden oluşmalıdır").required("Bu alan zorunludur"),
+    password: Yup.string().matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/, "Min 8 karakter. Bir büyük, bir küçük harf. Bir rakam ve bir özel karakter girilmelidir").min(6, "Minimum 6 karakterden oluşmalıdır").required("Bu alan zorunludur"),
+})
+
+
+export default loginSchema

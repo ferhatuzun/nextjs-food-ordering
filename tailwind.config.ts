@@ -27,7 +27,8 @@ export default {
         red:"#FF6868",
         sectionBg:"#EDEAEA",
         input:"#B0BAC3",
-        gray:"#4A4A4A"
+        gray:"#4A4A4A",
+        filterButton:"#EDFFEF"
       },
       fontFamily:{
         poppins:["Poppins", "serif"],

@@ -6,28 +6,71 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import UiFoodCard from "./Ui/UiFoodCard";
 const SliderSection = () => {
+  const food = [
+    {
+      id: "1",
+      foodName: "Pizza",
+      desc:"Lorem ipsum dolor sit amet.",
+      ingredients: ["Zeytin", "Mantar", "Biber"],
+      price: 85.0,
+      images: "ui-food-card.png",
+    },
+    {
+      id: "2",
+      foodName: "Hamburger",
+      desc:"Lorem ipsum dolor sit amet.",
+      ingredients: ["Soğan", "Turşu"],
+      price: 60.0,
+      images: "ui-food-card.png",
+    },
+    {
+      id: "3",
+      foodName: "Tavuk Döner",
+      desc:"Lorem ipsum dolor sit amet.",
+      ingredients: ["Mayonez", "Ketçap"],
+      price: 45.0,
+      images: "ui-food-card.png",
+    },
+    {
+      id: "4",
+      foodName: "Mantı",
+      desc:"Lorem ipsum dolor sit amet.",
+      ingredients: ["Sarımsaklı Yoğurt"],
+      price: 50.0,
+      images: "ui-food-card.png",
+    },
+    {
+      id: "5",
+      foodName: "Çorba",
+      desc:"Lorem ipsum dolor sit amet.",
+      ingredients: ["Yağ", "Pul Biber"],
+      price: 30.0,
+      images: "ui-food-card.png",
+    },
+  ];
+
   const settings = {
     dots: false,
     infinite: true,
     speed: 500,
     slidesToShow: 3,
     slidesToScroll: 1,
-    responsive:[
+    responsive: [
       {
         breakpoint: 640,
-        settings:{
-          slidesToShow:1,
-        }
+        settings: {
+          slidesToShow: 1,
+        },
       },
       {
         breakpoint: 768,
-        settings:{
-          slidesToShow:2,
-        }
-      }
-    ]
+        settings: {
+          slidesToShow: 2,
+        },
+      },
+    ],
   };
-  const sliderRef = useRef<Slider|null>(null);
+  const sliderRef = useRef<Slider | null>(null);
   const next = () => {
     sliderRef.current?.slickNext();
   };
@@ -65,15 +108,13 @@ const SliderSection = () => {
             sliderRef.current = slider;
           }}
         >
-          <div className="p-5">
-            <UiFoodCard />
-          </div>
-          <div className="p-5">
-            <UiFoodCard />
-          </div>
-          <div className="p-5">
-            <UiFoodCard />
-          </div>
+          {food.map((item) => {
+            return (
+              <div className="p-5" key={item.id}>
+                <UiFoodCard id={item.id} desc={item.desc} foodName={item.foodName} images={item.images} price={item.price}/>
+              </div>
+            );
+          })}
         </Slider>
       </div>
     </div>
